@@ -17,6 +17,7 @@ import androidx.core.app.NotificationManagerCompat
 import androidx.core.content.ContextCompat
 import com.example.todoapp.ui.screen.TodoScreen
 import com.example.todoapp.ui.theme.TodoAppTheme
+import androidx.compose.ui.Modifier
 
 class MainActivity : ComponentActivity() {
 
@@ -40,7 +41,13 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             TodoAppTheme {
-                TodoScreen(sendTestNotification = { checkPermissionAndNotify() })
+                Surface(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .systemBarsPadding()
+                ) {
+                    TodoScreen(sendTestNotification = { checkPermissionAndNotify() })
+                }
             }
         }
     }
